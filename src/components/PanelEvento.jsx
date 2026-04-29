@@ -185,11 +185,11 @@ function PanelEvento() {
                                         <td className="px-6 py-3 text-xs font-bold text-red-600">${evento.totalPagar.toFixed(2)}</td>
                                         <td className="px-6 py-3">
                                             <div className={`flex items-center gap-2 transition-opacity duration-200 ${hoveredRow === evento.id ? 'opacity-100' : 'opacity-0'}`}>
-                                                <button className="p-2 rounded-lg hover:bg-purple-100 transition-colors group" title="Gestionar">
+                                                <Link to="/gestion" className="p-2 rounded-lg hover:bg-purple-100 transition-colors group" title="Gestionar">
                                                     <svg className="w-5 h-5 text-[#a259ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
                                                     </svg>
-                                                </button>
+                                                </Link>
                                                 <button className="p-2 rounded-lg hover:bg-lime-100 transition-colors" title="Pagar">
                                                     <svg className="w-5 h-5 text-lime-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />

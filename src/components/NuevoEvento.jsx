@@ -41,7 +41,7 @@ function NuevoEvento({ onClose }) {
 
     return (
         <>
-            <div className="fixed top-0 right-0 h-full w-full max-w-2xl bg-white z-50 shadow-2xl transition-transform duration-500 ease-in-out translate-x-0 overflow-y-auto" style={{boxShadow:'-8px 0 32px 0 rgba(0,0,0,0.10)'}}>
+            <div className="fixed top-0 right-0 h-full w-full max-w-xl bg-white z-50 shadow-2xl transition-transform duration-500 ease-in-out translate-x-0 overflow-y-auto" style={{boxShadow:'-8px 0 32px 0 rgba(0,0,0,0.10)'}}>
                 <div className="flex items-center justify-between p-6 border-b border-[#ededed] sticky top-0 bg-white z-10">
                     <h1 className="text-2xl font-black text-black">NUEVO EVENTO</h1>
                     <button onClick={onClose} className="rounded-full p-2 hover:bg-[#ededed] transition-colors">
