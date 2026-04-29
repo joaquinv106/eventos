@@ -6,65 +6,29 @@ import NavCategorias from './nav_categorias';
 class Eventos extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            currentIndex: 0,
-            cardWidth: 0,
-            visibleCount: 1
-        };
-        this.carouselRef = createRef();
+        this.containerRef = createRef();
     }
 
     componentDidMount() {
-        this.updateCarouselMetrics();
-        window.addEventListener('resize', this.updateCarouselMetrics);
+        this.animatePageEntry();
     }
 
-    componentWillUnmount() {
-        window.removeEventListener('resize', this.updateCarouselMetrics);
-    }
-
-    updateCarouselMetrics = () => {
-        const carousel = this.carouselRef.current;
-        if (!carousel) return;
-        const card = carousel.querySelector('[data-card]');
-        if (!card) return;
-
-        const gap = 32; // tailwind gap-8
-        const cardWidth = card.getBoundingClientRect().width + gap;
-        const containerWidth = carousel.parentElement?.getBoundingClientRect().width || carousel.getBoundingClientRect().width;
-        const visibleCount = Math.max(1, Math.floor(containerWidth / cardWidth));
-
-        this.setState(prevState => {
-            const maxIndex = Math.max(0, 5 - visibleCount);
-            return {
-                cardWidth,
-                visibleCount,
-                currentIndex: Math.min(prevState.currentIndex, maxIndex)
-            };
-        });
-    }
-
-    handlePrev = () => {
-        this.setState(prevState => {
-            const maxIndex = Math.max(0, 5 - prevState.visibleCount);
-            return {
-                currentIndex: prevState.currentIndex === 0 ? maxIndex : prevState.currentIndex - 1
-            };
-        });
-    }
-
-    handleNext = () => {
-        this.setState(prevState => {
-            const maxIndex = Math.max(0, 5 - prevState.visibleCount);
-            return {
-                currentIndex: prevState.currentIndex >= maxIndex ? 0 : prevState.currentIndex + 1
-            };
-        });
+    animatePageEntry = () => {
+        if (this.containerRef.current) {
+            this.containerRef.current.style.opacity = 0;
+            this.containerRef.current.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                this.containerRef.current.style.transition = 'opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                this.containerRef.current.style.opacity = 1;
+                this.containerRef.current.style.transform = 'translateY(0)';
+            }, 50);
+        }
     }
 
     renderEventCard(event) {
         return (
-            <Link key={event.id} to={`/evento/${event.id}`} className="group overflow-hidden rounded-[32px] shadow-2xl shadow-slate-900/20 transition-all duration-500 hover:shadow-3xl hover:shadow-slate-900/30 flex-shrink-0 w-full sm:w-[260px] md:w-[300px] xl:w-[340px] block text-inherit no-underline" style={{ minWidth: '260px' }}>
+            <Link key={event.id} to={`/evento/${event.id}`} className="group overflow-hidden rounded-[32px] shadow-2xl shadow-slate-900/20 transition-all duration-500 hover:shadow-3xl hover:shadow-slate-900/30 block text-inherit no-underline h-full" style={{}}>
                 <div className="relative overflow-hidden h-[260px] sm:h-[280px] transition-all duration-500">
                     <img
                         src={event.image}
@@ -168,43 +132,14 @@ class Eventos extends Component {
         ];
 
         return (
+            <div ref={this.containerRef} style={{ opacity: 0, transform: 'translateY(20px)' }}>
             <section className="max-w-[1200px] mx-auto px-4">
                 <NavCategorias />
-                <div className="relative flex items-center justify-center gap-6">
-                    {/* Flecha izquierda */}
-                    <button
-                        onClick={this.handlePrev}
-                        className=" left-4 top-1/2 z-50 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-lime-400/95 text-black shadow-lg transition-all duration-300 hover:bg-lime-500 sm:left-6"
-                    >
-                        <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                        </svg>
-                    </button>
-
-                    {/* Carrusel de cards */}
-                    <div className="w-full overflow-hidden px-4 md:px-0">
-                        <div
-                            ref={this.carouselRef}
-                            className="flex gap-8 transition-transform duration-500 ease-out"
-                            style={{
-                                transform: `translateX(-${this.state.currentIndex * this.state.cardWidth}px)`
-                            }}
-                        >
-                            {events.map((event) => this.renderEventCard(event))}
-                        </div>
-                    </div>
-
-                    {/* Flecha derecha */}
-                    <button
-                        onClick={this.handleNext}
-                        className=" right-4 top-1/2 z-50 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-lime-400/95 text-black shadow-lg transition-all duration-300 hover:bg-lime-500 sm:right-6"
-                    >
-                        <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                    </button>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {events.map((event) => this.renderEventCard(event))}
                 </div>
             </section>
+            </div>
         );
     }
 }

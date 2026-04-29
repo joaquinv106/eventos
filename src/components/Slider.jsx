@@ -12,10 +12,25 @@ class Slider extends Component {
         this.state = {
             currentSlide: 0
         };
+        this.containerRef = React.createRef();
     }
 
     componentDidMount() {
         this.startAutoSlide();
+        this.animatePageEntry();
+    }
+
+    animatePageEntry = () => {
+        if (this.containerRef.current) {
+            this.containerRef.current.style.opacity = 0;
+            this.containerRef.current.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                this.containerRef.current.style.transition = 'opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                this.containerRef.current.style.opacity = 1;
+                this.containerRef.current.style.transform = 'translateY(0)';
+            }, 50);
+        }
     }
 
     componentWillUnmount() {
@@ -85,6 +100,7 @@ class Slider extends Component {
             : 'bg-gradient-to-l from-black/100 via-black/80 to-transparent';
 
         return (
+            <div ref={this.containerRef} style={{ opacity: 0, transform: 'translateY(20px)' }}>
              <section className="w-full bg-cover bg-center flex items-center justify-center">
                 <div className="w-full flex flex-col items-center justify-center">
                     <div className="w-full h-[560px] md:h-[640px] relative overflow-hidden">
@@ -94,7 +110,7 @@ class Slider extends Component {
                         <div className={`absolute bottom-8 z-10 max-w-3xl p-6 ${textPositionClass}`}>
                             <p className="text-xs uppercase tracking-[0.4em] text-lime-400 mb-3">{currentSlide.category}</p>
                             <p className="text-sm uppercase tracking-[0.35em] text-white/70 mb-2">PRESENTS</p>
-                            <h1 className="max-w-7xl text-7xl font-medium tracking-tight text-pretty md:text-[4rem]/14">
+                            <h1 className="max-w-7xl text-7xl font-medium tracking-tight text-pretty md:text-[4rem]/14 !text-shadow-lg !md:text-shadow-lg/30">
                                 {currentSlide.title}
                             </h1>
                             <div className="mt-5 flex flex-wrap gap-3">
@@ -129,6 +145,7 @@ class Slider extends Component {
                     </div>
                 </div> 
             </section>
+            </div>
         )
     }
 

@@ -1,18 +1,22 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { usePageAnimation } from '../hooks/usePageAnimation';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const containerRef = usePageAnimation();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // lógica de login aquí
+    navigate('/panel-eventos');
   };
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row">
+    <div ref={containerRef} style={{ opacity: 0, transform: 'translateY(20px)' }} className="min-h-screen flex flex-col md:flex-row">
       {/* Lado izquierdo: fondo degradado y texto */}
       <div className="hidden md:flex w-1/2 min-h-screen flex-col justify-between p-12 bg-black relative overflow-hidden">
         <div>
