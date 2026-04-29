@@ -1,5 +1,6 @@
 
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import imagen1 from "../img/header/evento1.jpg";
 import imagen2 from "../img/header/evento2.jpg";
 import imagen3 from "../img/header/evento3.jpg";
@@ -108,9 +109,9 @@ class Slider extends Component {
                                 <span className="rounded-full bg-white/10 px-4 py-2 font-semibold">{currentSlide.time}</span>
                             </div>
                             <div className="mt-6">
-                                <button className="rounded-full border border-lime-400 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-lime-400 hover:text-black">
+                                <Link to={`/evento/${this.state.currentSlide + 1}`} className="rounded-full border border-lime-400 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-lime-400 hover:text-black inline-block">
                                     MÁS INFORMACIÓN
-                                </button>
+                                </Link>
                             </div>
                         </div>
                         <div className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 gap-2">

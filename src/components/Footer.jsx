@@ -7,7 +7,7 @@ class Footer extends Component {
                 <div className="max-w-6xl mx-auto">
                     {/* Sección principal de llamada a acción */}
                     <div className="text-center mb-16">
-                        <h1 className="text-7xl md:text-8xl font-black uppercase tracking-[0.18em] leading-tight mb-8 !text-white" style={{ color: '#ffffff', fontFamily: 'Poppins, Inter, system-ui' }}>
+                        <h1 className="text-4xl text-white tracking-tighter text-balance !text-white" style={{ color: '#ffffff', fontFamily: 'Poppins, Inter, system-ui' }}>
                             ¿Quieres anunciar tu evento?
                         </h1>
                         <button className="bg-lime-400 hover:bg-lime-300 text-black font-bold text-xl md:text-2xl px-12 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-lime-400/50 transform">

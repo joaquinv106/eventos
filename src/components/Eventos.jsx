@@ -1,4 +1,5 @@
 import { Component, createRef } from 'react';
+import { Link } from 'react-router-dom';
 import imagen3 from '../img/header/evento2.jpg';
 import NavCategorias from './nav_categorias';
 
@@ -63,7 +64,7 @@ class Eventos extends Component {
 
     renderEventCard(event) {
         return (
-            <div key={event.id} data-card className="group overflow-hidden rounded-[32px] shadow-2xl shadow-slate-900/20 transition-all duration-500 hover:shadow-3xl hover:shadow-slate-900/30 flex-shrink-0 w-full sm:w-[260px] md:w-[300px] xl:w-[340px]" style={{ minWidth: '260px' }}>
+            <Link key={event.id} to={`/evento/${event.id}`} className="group overflow-hidden rounded-[32px] shadow-2xl shadow-slate-900/20 transition-all duration-500 hover:shadow-3xl hover:shadow-slate-900/30 flex-shrink-0 w-full sm:w-[260px] md:w-[300px] xl:w-[340px] block text-inherit no-underline" style={{ minWidth: '260px' }}>
                 <div className="relative overflow-hidden h-[260px] sm:h-[280px] transition-all duration-500">
                     <img
                         src={event.image}
@@ -108,7 +109,7 @@ class Eventos extends Component {
                         </h2>
                     </div>
                 </div>
-            </div>
+            </Link>
         );
     }
 
