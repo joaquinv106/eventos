@@ -30,7 +30,7 @@ function EditarEvento() {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="mx-auto w-full max-w-4xl space-y-6">
             <div className="grid gap-6 lg:grid-cols-[1.8fr_1fr]">
                 <div className="rounded-3xl border border-dashed border-[#d6d3d1] bg-[#f8fafc] p-4 relative overflow-hidden">
                     <div className="absolute inset-0 bg-cover bg-center opacity-100" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1529612700005-86d11f5daed4?auto=format&fit=crop&w=1200&q=80)' }} />

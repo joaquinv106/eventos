@@ -28,8 +28,9 @@ function VentaManual() {
     };
 
     return (
-        <div className="rounded-3xl border border-[#e5e7eb] bg-white p-6 shadow-sm sm:p-8">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-6">
+        <div className="mx-auto w-full max-w-3xl">
+            <div className="rounded-3xl border border-[#e5e7eb] bg-white p-6 shadow-sm sm:p-8">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-6">
                 <div>
                     <p className="text-xs uppercase tracking-[0.28em] text-[#6b7280]">Evento</p>
                     <h2 className="text-xl font-black text-[#111827]">Noche Eléctrica</h2>
@@ -160,6 +161,7 @@ function VentaManual() {
                     Registrar venta • ${subtotal.toFixed(2)}
                 </button>
             </form>
+        </div>
         </div>
     );
 }

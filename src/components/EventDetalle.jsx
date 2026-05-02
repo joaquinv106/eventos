@@ -103,7 +103,7 @@ function EventDetalle() {
         <div ref={containerRef} style={{ opacity: 0, transform: 'translateY(40px)' }} className="min-h-screen bg-white text-[#08060d] flex flex-col md:flex-row">
             {/* Imagen principal */}
             <div className="w-full md:w-1/2 h-[340px] md:h-auto relative flex-shrink-0">
-                <img src={event.image} alt={event.title} className="w-full h-full object-cover rounded-none md:rounded-l-3xl" />
+                <img src={event.image} alt={event.title} className="w-full h-full object-cover " />
             </div>
             {/* Panel derecho */}
             <div className="w-full md:w-1/2 flex flex-col justify-between p-8 md:p-14">

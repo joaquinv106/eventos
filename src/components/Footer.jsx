@@ -3,7 +3,7 @@ import { Component } from 'react';
 class Footer extends Component {
     render() {
         return (
-            <footer className="bg-black text-white py-16 px-4 mt-12">
+            <footer className="bg-black text-white py-16 px-4 ">
                 <div className="max-w-6xl mx-auto">
                     {/* Sección principal de llamada a acción */}
                     <div className="text-center mb-16">

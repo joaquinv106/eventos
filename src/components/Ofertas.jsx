@@ -12,7 +12,7 @@ function Ofertas() {
     }, [precio, descuento]);
 
     return (
-        <div className="space-y-6">
+        <div className="mx-auto w-full max-w-3xl space-y-6">
             <div className="rounded-3xl border border-[#e5e7eb] bg-white p-8">
                 <div className="flex items-center gap-3 mb-6 text-[#111827]">
                     <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-[#ede9fe] text-[#7c3aed] text-xl font-black">$</span>
